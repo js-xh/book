@@ -28,7 +28,7 @@
 
     <properties>
         <!-- spring版本号 -->
-        <spring.framework.version>5.0.2.RELEASE</spring.framework.version>
+        <spring.framework.version>5.2.5.RELEASE</spring.framework.version>
     </properties>
 
     <dependencies>
