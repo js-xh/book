@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--命名空间：用于分类（和java包差不多），可以自定义，但是和spring整合的时候，必须跟接口的全路径一致-->
+<mapper namespace="com.book.mapper.UserMapper">
+
+<!--    用户登录根据手机号码和密码查询-->
+    <select id="userLogin" resultType="com.book.entity.User" parameterType="com.book.pojo.UserAssist">
+        select * from user_tb where user_phone = #{phone} and user_password=#{userPassword}
+    </select>
+
+    <!--    用户登录成功之后修改登录时间-->
+    <update id="updateLoginTime" parameterType="com.book.pojo.UserAssist">
+        update user_tb set user_time=#{userTime} where user_phone = #{phone}
+    </update>
+
+    <!--    根据号码查询用户是否已经存在（在添加用户之前使用）-->
+    <select id="userRegister" resultType="com.book.entity.User" parameterType="com.book.pojo.UserAssist">
+        select * from user_tb where user_phone = #{phone}
+    </select>
+
+
+    <!--    注册用户（添加用户）-->
+    <insert id="addUser" parameterType="com.book.entity.User">
+         insert into user_tb values (null,#{userName},md5(#{userPassword}),#{userEmail},#{userSex},#{userPhone},#{userImage},#{userTime})
+    </insert>
+
+    <!--    根据用户id查询个人信息-->
+    <select id="selectUserById" resultType="com.book.entity.User" parameterType="Integer">
+        select * from user_tb where user_id = #{userId}
+    </select>
+
+    <!--    用户修改个人资料-->
+    <update id="updateUser" parameterType="com.book.entity.User">
+        update user_tb set user_name = #{userName},user_email=#{userEmail},user_image=#{userImage},user_time=#{userTime} where user_id = #{userId}
+    </update>
+
+    <!--    用户修改密码-->
+    <update id="updateUserPwd" parameterType="com.book.entity.User">
+        update user_tb set user_password = md5(#{userPassword}) where user_id = #{userId}
+    </update>
+</mapper>

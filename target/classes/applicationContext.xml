@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd
+            http://www.springframework.org/schema/tx
+            http://www.springframework.org/schema/tx/spring-tx.xsd ">
+
+    <!--指定需要扫描的包（包括子包，使注解生效）-->
+    <context:component-scan base-package="com.book"/>
+
+    <!--配置数据源-->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/book_plus?characterEncoding=utf8" />
+        <property name="user" value="root" />
+        <property name="password" value="root" />
+        <!-- 最大连接数 -->
+        <property name="maxPoolSize" value="30"/>
+        <!-- 最小连接数 -->
+        <property name="minPoolSize" value="10"/>
+        <!-- 初始化连接数 -->
+        <property name="initialPoolSize" value="5"/>
+    </bean>
+
+    <!--添加事务管理器-->
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--开启事务注解-->
+    <tx:annotation-driven transaction-manager="txManager"/>
+
+    <!--配置MyBatis工厂，同时指定数据源，并与MyBatis完美整合-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+    </bean>
+
+    <!--Mapper代理开发，使用spring自动扫描Mybatis的接口并装配（spring将指定包中所有被@Mapper注解标注的接口，自动装配为MyBatis的映射接口）-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--mybatis-spring组件的扫描器-->
+        <property name="basePackage" value="com.book.mapper"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+</beans>

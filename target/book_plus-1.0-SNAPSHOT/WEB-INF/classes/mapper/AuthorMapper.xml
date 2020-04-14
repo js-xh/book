@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--命名空间：用于分类（和java包差不多），可以自定义，但是和spring整合的时候，必须跟接口的全路径一致-->
+<mapper namespace="com.book.mapper.AuthorMapper">
+    <resultMap id="authorMap" type="com.book.entity.Author">
+        <id column="author_id" property="authorId"></id>
+        <result column="author_name" property="authorName"></result>
+        <result column="author_image" property="authorImage"></result>
+        <result column="author_age" property="authorAge"></result>
+        <result column="author_sex" property="authorSex"></result>
+        <result column="author_into" property="authorInto"></result>
+    </resultMap>
+<!--    查询所有作者信息记录-->
+    <select id="selectAllAuthor" resultMap="authorMap">
+        select * from author_tb where is_delete=1
+    </select>
+<!--    模糊查询作者信息记录-->
+    <select id="selectByNameAuthor" resultMap="authorMap" parameterType="com.book.pojo.AuthorAssist">
+        select * from author_tb where is_delete=1 and author_name LIKE CONCAT('%',#{keyword},'%')
+    </select>
+<!--    查询单条作者信息记录-->
+    <select id="selectByIdAuthor" parameterType="java.lang.Integer" resultMap="authorMap">
+        select * from author_tb where is_delete=1 and author_id = #{authorId}
+    </select>
+<!--    添加作者信息记录-->
+    <insert id="addAuthor" parameterType="com.book.entity.Author">
+        insert into author_tb values (null,#{authorName},#{authorImage},#{authorAge},#{authorSex},#{authorInto},#{isDelete},#{createTime})
+    </insert>
+<!--    修改作者信息记录-->
+    <update id="updateAuthor" parameterType="com.book.entity.Author">
+        update author_tb set author_name=#{authorName},author_image=#{authorImage},author_age=#{authorAge},author_sex=#{authorSex},author_into=#{authorInto},is_delete=#{isDelete},create_time=#{createTime} where author_id = #{authorId}
+    </update>
+<!--    删除作者信息记录-->
+    <update id="delAuthor" parameterType="java.lang.Integer">
+        update author_tb set is_delete=0 where author_id = #{authorId}
+    </update>
+
+
+</mapper>

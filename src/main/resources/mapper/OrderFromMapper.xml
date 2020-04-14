@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--命名空间：用于分类（和java包差不多），可以自定义，但是和spring整合的时候，必须跟接口的全路径一致-->
+<mapper namespace="com.book.mapper.OrderFromMapper">
+    <!--    查询购物车信息记录-->
+    <select id="selectAllOrder" resultType="com.book.pojo.OrderFromAssist">
+        SELECT order_form.order_id,user_tb.user_name,book_tb.book_name,order_form.numbers,order_form.sum_price,order_form.order_time FROM order_form,book_tb,user_tb WHERE order_form.user_id = user_tb.user_id AND order_form.book_id  = book_tb.book_id AND order_form.is_delete=1
+    </select>
+
+    <!--    查询用户购物车信息记录-->
+    <select id="selectOrderByUser" parameterType="Integer" resultType="com.book.pojo.OrderFromAssist">
+        SELECT order_form.order_id,user_tb.user_name,book_tb.book_name,book_tb.book_image,order_form.numbers,order_form.sum_price,order_form.order_time FROM order_form,book_tb,user_tb WHERE order_form.user_id = user_tb.user_id AND order_form.book_id  = book_tb.book_id AND order_form.is_delete=1 AND order_form.user_id = #{userId}
+    </select>
+    <!--    添加购物车信息记录-->
+    <insert id="addOrder" parameterType="com.book.pojo.OrderFromAssist">
+        insert into order_form values (null,#{userId},#{bookId},#{numbers},#{sumPrice},#{orderTime},#{isDelete})
+    </insert>
+    <!--    修改图书的库存数量-->
+    <update id="updateBookNumber" parameterType="com.book.entity.Book">
+        update book_tb set book_number=book_number-#{bookNumber} where book_id=#{bookId}
+    </update>
+
+    <!--    添加已购单信息记录-->
+    <insert id="addBought" parameterType="com.book.pojo.OrderFromAssist">
+        insert into bought_tb values (null,#{userId},#{bookId},#{numbers},#{sumPrice},#{orderTime},#{isDelete},#{site},#{bookPrice})
+    </insert>
+
+    <!--    删除购物车-->
+    <update id="delOrder" parameterType="Integer">
+        update order_form set is_delete=0 where order_id = #{orderId}
+    </update>
+
+    <!--    删除已购单-->
+    <update id="delBought" parameterType="com.book.pojo.OrderFromAssist">
+        update bought_tb set is_delete=0 where bought_id=#{boughtId}
+    </update>
+
+    <!--    根据用户查询相应的已购信息记录-->
+    <select id="selectBoughtByUser" resultType="com.book.pojo.OrderFromAssist" parameterType="com.book.pojo.ScreenBook">
+        SELECT bought_tb.bought_id,user_tb.user_id,user_tb.user_name,book_tb.book_id,book_tb.book_name,bought_tb.numbers,bought_tb.book_price,bought_tb.sum_price,bought_tb.order_time,bought_tb.site FROM bought_tb,book_tb,user_tb WHERE bought_tb.user_id = user_tb.user_id AND bought_tb.book_id  = book_tb.book_id AND bought_tb.is_delete=1 and user_tb.user_name=#{keyword}
+    </select>
+
+    <!--    查询全部的已购信息记录-->
+    <select id="selectBoughtAll" resultType="com.book.pojo.OrderFromAssist">
+        SELECT bought_tb.bought_id,user_tb.user_id,user_tb.user_name,book_tb.book_id,book_tb.book_name,bought_tb.numbers,bought_tb.book_price,bought_tb.sum_price,bought_tb.order_time,bought_tb.site FROM bought_tb,book_tb,user_tb WHERE bought_tb.user_id = user_tb.user_id AND bought_tb.book_id  = book_tb.book_id AND bought_tb.is_delete=1
+    </select>
+
+
+</mapper>

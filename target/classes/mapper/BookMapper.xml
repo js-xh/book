@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--命名空间：用于分类（和java包差不多），可以自定义，但是和spring整合的时候，必须跟接口的全路径一致-->
+<mapper namespace="com.book.mapper.BookMapper">
+    <resultMap id="bookMap" type="com.book.entity.Book">
+        <id column="book_id" property="bookId"></id>
+        <result column="book_name" property="bookName"></result>
+        <result column="bookType_id" property="typeId"></result>
+        <result column="author_name" property="authorName"></result>
+        <result column="book_image" property="bookImage"></result>
+        <result column="book_price" property="bookPrice"></result>
+        <result column="book_number" property="bookNumber"></result>
+        <result column="book_content" property="bookContent"></result>
+        <result column="book_is_delete" property="bookIsDelete"></result>
+        <result column="book_release_time" property="bookReleaseTime"></result>
+    </resultMap>
+    <!--        查询图书的全部信息记录-->
+    <select id="selectAllBook" resultType="com.book.pojo.BookAssist">
+        select book_tb.*,grade_tb.grade_number,booktype_tb.bookType_name from book_tb,grade_tb,booktype_tb where book_tb.book_is_delete=1 AND book_tb.book_id=grade_tb.book_id and book_tb.bookType_id = bookType_tb.bookType_id
+    </select>
+
+    <!--        查询单条的图书信息记录-->
+    <select id="selectBookById" parameterType="java.lang.Integer" resultType="com.book.pojo.BookAssist">
+        SELECT book_tb.*,grade_tb.grade_number,bookType_tb.bookType_name FROM book_tb,bookType_tb,grade_tb WHERE grade_tb.book_id=book_tb.book_id AND book_tb.bookType_id=bookType_tb.bookType_id AND book_tb.book_id=#{bookId}
+    </select>
+    <!--        模糊查询图书信息记录-->
+    <select id="selectKeyword" resultType="com.book.pojo.BookAssist" parameterType="com.book.pojo.ScreenBook">
+        SELECT book_tb.*,grade_tb.grade_number,bookType_tb.bookType_name FROM book_tb,bookType_tb,grade_tb WHERE grade_tb.book_id=book_tb.book_id AND book_tb.bookType_id=bookType_tb.bookType_id AND book_tb.book_name LIKE CONCAT('%',#{keyword},'%')
+    </select>
+
+    <!--            根据图书类型查询图书信息-->
+    <select id="selectByBookTypeName" resultType="com.book.pojo.BookAssist" parameterType="com.book.pojo.ScreenBook">
+        SELECT book_tb.*,grade_tb.grade_number,bookType_tb.bookType_name FROM book_tb,bookType_tb,grade_tb WHERE grade_tb.book_id=book_tb.book_id AND book_tb.bookType_id=bookType_tb.bookType_id AND bookType_name=#{typeName} ORDER BY grade_number DESC
+    </select>
+
+    <!--        图书删除-->
+    <delete id="deleteBook" parameterType="java.lang.Integer">
+        update book_tb set book_is_delete =0 where book_id = #{bookId}
+    </delete>
+    <!--        添加图书的数据-->
+    <insert id="addBook" parameterType="com.book.pojo.BookAssist">
+         insert into book_tb values (null,#{bookName},#{typeId},#{authorName},#{bookImage},#{bookPrice},#{bookNumber},#{bookContent},#{bookIsDelete},#{bookReleaseTime})
+    </insert>
+
+    <!--        根据评分跟价格筛选图书信息记录-->
+    <select id="selectScreenBook" resultType="com.book.pojo.BookAssist" parameterType="com.book.pojo.ScreenBook">
+        SELECT book_tb.*,grade_tb.grade_number,bookType_tb.bookType_name FROM book_tb,bookType_tb,grade_tb WHERE grade_tb.book_id=book_tb.book_id AND book_tb.bookType_id=bookType_tb.bookType_id AND grade_tb.grade_number BETWEEN #{gradeFront} AND #{gradeQueen} AND book_price BETWEEN #{priceFront} AND #{priceQueen} ORDER BY grade_number DESC
+    </select>
+
+
+    <!--        根据图书类型与评分跟价格筛选图书信息记录-->
+    <select id="selectScreenBookTypeName" resultType="com.book.pojo.BookAssist" parameterType="com.book.pojo.ScreenBook">
+        SELECT book_tb.*,grade_tb.grade_number,bookType_tb.bookType_name FROM book_tb,bookType_tb,grade_tb WHERE grade_tb.book_id=book_tb.book_id AND book_tb.bookType_id=bookType_tb.bookType_id AND bookType_tb.bookType_name=#{typeName} AND grade_tb.grade_number BETWEEN #{gradeFront} AND #{gradeQueen} AND book_price BETWEEN #{priceFront} AND #{priceQueen} ORDER BY grade_number DESC
+    </select>
+
+    <!--        根据模糊查询图书与评分跟价格筛选图书信息记录-->
+    <select id="selectScreenBookKeyword" resultType="com.book.pojo.BookAssist" parameterType="com.book.pojo.ScreenBook">
+        SELECT book_tb.*,grade_tb.grade_number,bookType_tb.bookType_name FROM book_tb,bookType_tb,grade_tb WHERE grade_tb.book_id=book_tb.book_id AND book_tb.bookType_id=bookType_tb.bookType_id AND book_tb.book_name LIKE CONCAT('%',#{keyword},'%') AND grade_tb.grade_number BETWEEN #{gradeFront} AND #{gradeQueen} AND book_price BETWEEN #{priceFront} AND #{priceQueen} ORDER BY grade_number DESC
+    </select>
+
+    <!--        图书Id查询图书图片-->
+    <select id="selectBookImage" resultType="com.book.pojo.BookImage" parameterType="java.lang.Integer">
+        SELECT * FROM book_image WHERE book_id = #{bookId}
+    </select>
+
+    <!--    图书修改信息-->
+    <update id="updateBook" parameterType="com.book.entity.Book">
+        update book_tb set book_name = #{bookName},bookType_id = #{typeId},author_name=#{authorName},book_image=#{bookImage},book_price=#{bookPrice},book_number=#{bookNumber},book_release_time=#{bookReleaseTime} where book_id = #{bookId}
+    </update>
+
+    <insert id="addGread" parameterType="com.book.entity.Book">
+        insert into grade_tb values (null,#{gradeNumber},#{bookId})
+    </insert>
+
+    <select id="selectAddId" parameterType="com.book.entity.Book" resultType="com.book.entity.Book">
+        select * from book_tb where author_name = #{authorName} and book_name=#{bookName}
+    </select>
+</mapper>

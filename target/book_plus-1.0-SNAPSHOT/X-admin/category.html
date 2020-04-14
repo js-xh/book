@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>
+			X-admin v1.0
+		</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="./css/x-admin.css" media="all">
+		<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+		<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+			    // 自动获取数据并实现分页
+				$.ajax({
+					type: "get",
+					url: "http://localhost:8080/admin/selectAllBookType",
+					data: {
+						pageNum: 1,
+						pageSize: 10
+					},
+					dataType: "json",
+					success: function(data) {
+						var tr = "";
+                        var sum = data.sum;
+                        var sumPage =data.sumPage;
+                        var number = data.number;
+						$.each(data.pageList.list, function(index, type) {
+							tr += "<tr><td><input type='checkbox' value='" + type.bookTypeId + "'name='box'></td><td>" + type.bookTypeId +
+                                "</td><td>" + type.bookTypeName + "</td><td><button class='layui-btn layui-btn-normal' data-toggle='modal' data-target='#myModal' id='up'><i class='layui-icon'></i>编辑</button><button type='button' id='del' class='layui-btn layui-btn-danger'><i class='layui-icon'></i>删除</button></td></tr>";
+
+						});
+						$('#x-link').html(tr);
+						$(".x-right").html("总共有" + sum + "条数据");
+                        $("#sumToal").html("总共有"+sum+"条数据");
+                        $("#sumPage").html("共有"+sumPage+"页   ");
+                        $("#number").html("当前是第"+number+"页");
+                        $("#one").val(sumPage);
+                        $("#two").val(number);
+					}
+				});
+                // 添加图书类型数据
+				$("#addType").click(function() {
+					$.ajax({
+						type: "get",
+						url: "http://localhost:8080/admin/addType",
+						data: {
+							bookTypeName: $("#bookTypeName").val()
+						},
+						dataType: "json",
+						success: function(data) {
+							if(data != null) {
+								alert("成功添加" + data + "数据。");
+								window.location.reload();
+							} else {
+								alert("添加失败。")
+							}
+
+						}
+
+					});
+				});
+                // 批量删除图书数据
+				$("#delType").on("click", function() {
+					var chk_value = [];
+
+					$('input[name="box"]:checked').each(function() {
+
+						chk_value.push($(this).val());
+					});
+
+					alert("要删除的数据" + chk_value);
+
+					for(var i = 0; i < chk_value.length; i++) {
+						$.ajax({
+							type: "get",
+							url: "http://localhost:8080/admin/delType",
+							data: {
+								bookTypeId: chk_value[i]
+							}
+						});
+					}
+
+				});
+                // 获取要修改的值
+				$("#x-link").on("click", "#up", function() {
+					var s = $(this).parents().first().prev().prev().text();
+					var d = $(this).parents().first().prev().text();
+					var ink = "<input type='text' id='TypeName' class='form-control' placeholder='请输入要修改的类别名称' value='" + d + "'/>" +
+							"<input type='hidden' id='bookId' value='" + s + "'/> ";
+
+					$("#nn").html(ink);
+
+
+				});
+                // 实现修改数据
+				$("#upda").click(function() {
+					console.log("图书:"+$("#TypeName").val())
+					$.ajax({
+						type: "get",
+						url: "http://localhost:8080/admin/updateType",
+						data: {
+							bookTypeId: $("#bookId").val(),
+							bookTypeName: $("#TypeName").val()
+						},
+						dateType: "json",
+						success: function(data) {
+							if(data != 0) {
+								alert("修改成功！");
+							} else if(data == 0) {
+								alert("修改失败！");
+							}
+						}
+					});
+				});
+                // 点击相应的按钮实现分页效果
+				$("a").click(function () {
+				    var pa = $(this).text();
+				    if(pa>$("#one").val()){
+				        pa=$("#one").val();
+                    }
+                    $.ajax({
+                        type:"get",
+                        url:"http://localhost:8080/admin/selectAllBookType",
+                        data:{
+                            pageNum:pa,
+                            pageSize:10,
+                        },
+                        dataType:"json",
+                        success:function (data) {
+                            var tr = "";
+                            var sum = data.sum;
+                            var sumToal = data.sum;
+                            var sumPage =data.sumPage;
+                            var number = data.number;
+                            $.each(data.pageList.list, function(index, type) {
+                                tr += "<tr><td><input type='checkbox' value='" + type.bookTypeId + "'name='box'></td><td>" + type.bookTypeId +
+                                    "</td><td>" + type.bookTypeName + "</td><td><button class='layui-btn layui-btn-normal' data-toggle='modal' data-target='#myModal' id='up'><i class='layui-icon'></i>编辑</button><button type='button' id='del' class='layui-btn layui-btn-danger'><i class='layui-icon'></i>删除</button></td></tr>";
+
+                            });
+                            $('#x-link').html(tr);
+                            $(".x-right").html("总共有" + sum + "条数据");
+                            $("#sumToal").html("总共有"+sumToal+"条数据");
+                            $("#sumPage").html("共有"+sumPage+"页");
+                            $("#number").html("当前是第"+number+"页");
+                            $("#one").val(sumPage);
+                            $("#two").val(number);
+                        }
+                    })
+                });
+				// 上一页
+				$("#fa").click(function () {
+				    var faPage = $("#two").val()-1;
+				    if (faPage==0){
+				        faPage=$("#two").val();
+                    }
+                    $.ajax({
+                        type:"get",
+                        url:"http://localhost:8080/admin/selectAllBookType",
+                        data:{
+                            pageNum:faPage,
+                            pageSize:10,
+                        },
+                        dataType:"json",
+                        success:function (data) {
+                            var tr = "";
+                            var sum = data.sum;
+                            var sumToal = data.sum;
+                            var sumPage =data.sumPage;
+                            var number = data.number;
+                            $.each(data.pageList.list, function(index, type) {
+                                tr += "<tr><td><input type='checkbox' value='" + type.bookTypeId + "'name='box'></td><td>" + type.bookTypeId +
+                                    "</td><td>" + type.bookTypeName + "</td><td><button class='layui-btn layui-btn-normal' data-toggle='modal' data-target='#myModal' id='up'><i class='layui-icon'></i>编辑</button><button type='button' id='del' class='layui-btn layui-btn-danger'><i class='layui-icon'></i>删除</button></td></tr>";
+
+                            });
+                            $('#x-link').html(tr);
+                            $(".x-right").html("总共有" + sum + "条数据");
+                            $("#sumToal").html("总共有"+sumToal+"条数据");
+                            $("#sumPage").html("共有"+sumPage+"页");
+                            $("#number").html("当前是第"+number+"页");
+                            $("#one").val(sumPage);
+                            $("#two").val(number);
+                        }
+                    })
+                });
+				// 下一页
+				$("#tu").click(function () {
+                    var tuPage = parseInt($("#two").val())+1;
+                    if (tuPage>$("#one").val()){
+                        tuPage=$("#one").val();
+                    }
+                    $.ajax({
+                        type:"get",
+                        url:"http://localhost:8080/admin/selectAllBookType",
+                        data:{
+                            pageNum:tuPage,
+                            pageSize:10,
+                        },
+                        dataType:"json",
+                        success:function (data) {
+                            var tr = "";
+                            var sum = data.sum;
+                            var sumToal = data.sum;
+                            var sumPage =data.sumPage;
+                            var number = data.number;
+                            $.each(data.pageList.list, function(index, type) {
+                                tr += "<tr><td><input type='checkbox' value='" + type.bookTypeId + "'name='box'></td><td>" + type.bookTypeId +
+                                    "</td><td>" + type.bookTypeName + "</td><td><button class='layui-btn layui-btn-normal' data-toggle='modal' data-target='#myModal' id='up'><i class='layui-icon'></i>编辑</button><button type='button' id='del' class='layui-btn layui-btn-danger'><i class='layui-icon'></i>删除</button></td></tr>";
+
+                            });
+                            $('#x-link').html(tr);
+                            $(".x-right").html("总共有" + sum + "条数据");
+                            $("#sumToal").html("总共有"+sumToal+"条数据");
+                            $("#sumPage").html("共有"+sumPage+"页");
+                            $("#number").html("当前是第"+number+"页");
+                            $("#one").val(sumPage);
+                            $("#two").val(number);
+                        }
+                    })
+                });
+
+				// 根据单条删除图书数据
+                $("#x-link").on("click", "#del", function() {
+                    var s = $(this).parents().first().prev().prev().text();
+                    alert("删除："+s);
+                    $.ajax({
+                        type:"get",
+                        url:"http://localhost:8080/admin/delType",
+                        data:{
+                            bookTypeId:$(this).parents().first().prev().prev().text()
+                        },
+                        dataType:"json",
+                        success:function (data) {
+                            if(data != 0){
+                                alert("删除成功！");
+                                window.location.reload();
+                            }else if(data == 0){
+                                alert("删除失败！");
+                            }
+                        }
+                    })
+                });
+
+                //本页面刷新功能
+                $("#refresh").click(function() {
+                    window.location.reload();
+                });
+
+			});
+		</script>
+	</head>
+
+	<body>
+
+		<div class="x-nav">
+			<span class="layui-breadcrumb">
+              <a><cite>首页</cite></a>
+              <a><cite>会员管理</cite></a>
+              <a><cite>分类管理</cite></a>
+            </span>
+			<a class="layui-btn layui-btn-small" id="refresh" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新"><i class="layui-icon" style="line-height:30px">ဂ</i></a>
+		</div>
+		<div class="x-body">
+			<div class="layui-input-inline" style="width:120px">
+				<input type="text" id="bookTypeName" placeholder="分类名" autocomplete="off" class="layui-input">
+			</div>
+			<div class="layui-input-inline" style="width:80px">
+				<button class="layui-btn" id="addType" lay-submit="" lay-filter="add"><i class="layui-icon">&#xe608;</i>增加</button>
+			</div>
+			<xblock><button class="layui-btn layui-btn-danger" id="delType"><i class="layui-icon">&#xe640;</i>批量删除</button><span class="x-right" style="line-height:40px">共有数据：88 条</span></xblock>
+			<table class="layui-table">
+				<thead>
+					<tr>
+						<th>
+							<input type="checkbox" name="" value="">
+						</th>
+						<th>
+							ID
+						</th>
+
+						<th>
+							分类名
+						</th>
+						<th>
+							操作
+						</th>
+					</tr>
+				</thead>
+				<tbody id="x-link">
+
+				</tbody>
+			</table>
+			<div class="container">
+				<ul class="pagination">
+					<li class="page-item">
+						<span class="page-link" id="fa" href="#">上一页</span>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="#">1</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="#">2</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="#">3</a>
+					</li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">4</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">5</a>
+                    </li>
+					<li class="page-item">
+						<span class="page-link" id="tu" href="#">下一页</span>
+					</li>
+<!--                    总页数-->
+                    <li id="sumPage" style="margin-right: 20px;margin-left: 10px" ></li>
+<!--                    总条数-->
+                    <li id="sumToal" style="margin-right: 20px"></li>
+<!--                    当前页数-->
+                    <li id="number" style="margin-right: 20px"></li>
+				</ul>
+			</div>
+			<div class="container">
+   
+              <!-- 模态框 -->
+              <div class="modal fade" id="myModal">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+
+                    <!-- 模态框头部 -->
+                    <div class="modal-header">
+                      <h4 class="modal-title">修改图书类型</h4>
+
+                    </div>
+
+                    <!-- 模态框主体 -->
+                    <div class="modal-body">
+                        <div class="form-group">
+                          <label>图书类型:</label>
+                         <div id="nn"></div>
+                        </div>
+                    </div>
+
+                    <!-- 模态框底部 -->
+                    <div class="modal-footer">
+                      <button type="button" id="upda" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+		</div>
+
+<!--        隐藏值 总页数-->
+        <p style="display: none" id="one"></p>
+        <!--        隐藏值 当前页数-->
+        <p style="display: none" id="two"></p>
+	</body>
+
+</html>

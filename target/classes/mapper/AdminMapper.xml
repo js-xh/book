@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--命名空间：用于分类（和java包差不多），可以自定义，但是和spring整合的时候，必须跟接口的全路径一致-->
+<mapper namespace="com.book.mapper.AdminMapper">
+    <!--    admin的登录功能-->
+    <select id="adminLogin" resultType="com.book.entity.Admin" parameterType="com.book.entity.Admin">
+        select * from admin_tb where admin_name = #{adminName} and admin_password=#{adminPassword}
+    </select>
+
+    <!--    修改admin的个人信息-->
+    <update id="updateAdmin" parameterType="com.book.entity.Admin">
+        update admin_tb set admin_name = #{adminName},admin_password =#{adminPassword},admin_sex = #{adminSex},admin_phone=#{adminPhone},admin_image=#{adminImage} where admin_id = #{adminId}
+    </update>
+    <!--    根据admin的账号查询个人的信息记录-->
+    <select id="selectByAdmin" resultType="com.book.entity.Admin" parameterType="java.lang.String">
+        select * from admin_tb where admin_name = #{adminName}
+    </select>
+
+
+</mapper>

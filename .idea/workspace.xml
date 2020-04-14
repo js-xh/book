@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="book_plus:war" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a35565fb-ab3a-4942-b943-f72ac1a77fd1" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="361" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="Jsp File" />
+      </list>
+    </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/webapp/index.jsp" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="userSettingsFile" value="E:\.m2\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1Ueeqy9JcBjC9wXrJaumUEY8b0j" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="js.last.introduce.type" value="VAR" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="Lombok plugin" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\book_plus\src\main\webapp\img" />
+      <recent name="H:\book_plus\src\main\webapp\img" />
+      <recent name="G:\book_plus\src\main\webapp" />
+      <recent name="G:\book_plus\src\main\java\com\book\controller" />
+      <recent name="G:\book_plus\src\main\java\com\book\entity" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.book.controller" />
+      <recent name="com.book.interceptor" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\book_plus\src\main\webapp\WEB-INF\admin" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.19">
+    <configuration name="TestAuthorMapper.testupte" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="book_plus" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.book.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.book.test" />
+      <option name="MAIN_CLASS_NAME" value="com.book.test.TestAuthorMapper" />
+      <option name="METHOD_NAME" value="testupte" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestAuthorMapper.testupte2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="book_plus" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.book.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.book.test" />
+      <option name="MAIN_CLASS_NAME" value="com.book.test.TestAuthorMapper" />
+      <option name="METHOD_NAME" value="testupte2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestBookMapper.testBought" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="book_plus" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.book.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.book.test" />
+      <option name="MAIN_CLASS_NAME" value="com.book.test.TestBookMapper" />
+      <option name="METHOD_NAME" value="testBought" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestBookMapper.testOrder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="book_plus" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.book.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.book.test" />
+      <option name="MAIN_CLASS_NAME" value="com.book.test.TestBookMapper" />
+      <option name="METHOD_NAME" value="testOrder" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestBookMapper.testOrder2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="book_plus" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.book.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.book.test" />
+      <option name="MAIN_CLASS_NAME" value="com.book.test.TestBookMapper" />
+      <option name="METHOD_NAME" value="testOrder2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tomcat 9.0.19" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.19" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="book_plus:war">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_book_plus" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="52987" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="book_plus:war" />
+        </option>
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.TestBookMapper.testOrder" />
+      <item itemvalue="JUnit.TestBookMapper.testOrder2" />
+      <item itemvalue="JUnit.TestAuthorMapper.testupte" />
+      <item itemvalue="JUnit.TestAuthorMapper.testupte2" />
+      <item itemvalue="JUnit.TestBookMapper.testBought" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.19" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.TestBookMapper.testBought" />
+        <item itemvalue="JUnit.TestAuthorMapper.testupte2" />
+        <item itemvalue="JUnit.TestAuthorMapper.testupte" />
+        <item itemvalue="JUnit.TestBookMapper.testOrder" />
+        <item itemvalue="JUnit.TestBookMapper.testOrder2" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a35565fb-ab3a-4942-b943-f72ac1a77fd1" name="Default Changelist" comment="" />
+      <created>1575721682458</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1575721682458</updated>
+      <workItem from="1575721685670" duration="938000" />
+      <workItem from="1575725643851" duration="12175000" />
+      <workItem from="1575787520658" duration="21551000" />
+      <workItem from="1575871822197" duration="12077000" />
+      <workItem from="1575936437912" duration="4856000" />
+      <workItem from="1575964963115" duration="6982000" />
+      <workItem from="1575981078933" duration="21243000" />
+      <workItem from="1576412782028" duration="14927000" />
+      <workItem from="1576496860690" duration="64272000" />
+      <workItem from="1576812804609" duration="277000" />
+      <workItem from="1576813825037" duration="271000" />
+      <workItem from="1576814760505" duration="244000" />
+      <workItem from="1576822810391" duration="160000" />
+      <workItem from="1576823037792" duration="1213000" />
+      <workItem from="1576830166886" duration="3956000" />
+      <workItem from="1576908478429" duration="14541000" />
+      <workItem from="1576984393785" duration="5488000" />
+      <workItem from="1576994477856" duration="26279000" />
+      <workItem from="1577030248793" duration="1524000" />
+      <workItem from="1577032086348" duration="3088000" />
+      <workItem from="1577070654900" duration="304000" />
+      <workItem from="1577071153212" duration="2614000" />
+      <workItem from="1577074047794" duration="635000" />
+      <workItem from="1577082072868" duration="1825000" />
+      <workItem from="1577100097658" duration="9808000" />
+      <workItem from="1577114041551" duration="1417000" />
+      <workItem from="1577116082485" duration="1568000" />
+      <workItem from="1577147936748" duration="12261000" />
+      <workItem from="1577161231196" duration="431000" />
+      <workItem from="1577168495614" duration="14785000" />
+      <workItem from="1577199847806" duration="1363000" />
+      <workItem from="1577235655032" duration="9802000" />
+      <workItem from="1577414451233" duration="22274000" />
+      <workItem from="1577514978574" duration="14003000" />
+      <workItem from="1577548054031" duration="7365000" />
+      <workItem from="1577588101712" duration="5873000" />
+      <workItem from="1577601230087" duration="15430000" />
+      <workItem from="1577622320160" duration="4901000" />
+      <workItem from="1577627699452" duration="1786000" />
+      <workItem from="1577630166055" duration="4981000" />
+      <workItem from="1577635205439" duration="2993000" />
+      <workItem from="1577638494278" duration="701000" />
+      <workItem from="1577674687644" duration="616000" />
+      <workItem from="1577678267858" duration="5182000" />
+      <workItem from="1577692502772" duration="5617000" />
+      <workItem from="1577708228065" duration="5253000" />
+      <workItem from="1577750986650" duration="1213000" />
+      <workItem from="1579772681266" duration="5442000" />
+      <workItem from="1580563674106" duration="1177000" />
+      <workItem from="1580735433283" duration="1036000" />
+      <workItem from="1580819698685" duration="1712000" />
+      <workItem from="1580903873492" duration="3952000" />
+      <workItem from="1580990247310" duration="3712000" />
+      <workItem from="1581076210575" duration="1336000" />
+      <workItem from="1581160846496" duration="3262000" />
+      <workItem from="1581246972936" duration="3274000" />
+      <workItem from="1581334932653" duration="3307000" />
+      <workItem from="1581422462624" duration="299000" />
+      <workItem from="1581509953033" duration="1979000" />
+      <workItem from="1581595701312" duration="11105000" />
+      <workItem from="1581679232954" duration="6009000" />
+      <workItem from="1581764011894" duration="1976000" />
+      <workItem from="1581835355767" duration="4694000" />
+      <workItem from="1581858417028" duration="1242000" />
+      <workItem from="1581927707002" duration="4230000" />
+      <workItem from="1582029473120" duration="682000" />
+      <workItem from="1582370358617" duration="1104000" />
+      <workItem from="1583933824203" duration="209000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="TestBookMapper_testOrder2 - 2019.12.27 at 16h 42m 55s.xml">
+      <configuration name="TestBookMapper.testOrder2" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestBookMapper_testOrder2 - 2019.12.27 at 16h 44m 55s.xml">
+      <configuration name="TestBookMapper.testOrder2" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestBookMapper_testOrder - 2019.12.27 at 16h 45m 07s.xml">
+      <configuration name="TestBookMapper.testOrder" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestAuthorMapper_testupte - 2019.12.28 at 15h 31m 59s.xml">
+      <configuration name="TestAuthorMapper.testupte" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestAuthorMapper_testupte - 2019.12.28 at 15h 32m 53s.xml">
+      <configuration name="TestAuthorMapper.testupte" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestAuthorMapper_testupte - 2019.12.28 at 15h 34m 05s.xml">
+      <configuration name="TestAuthorMapper.testupte" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestAuthorMapper_testupte2 - 2019.12.28 at 15h 35m 06s.xml">
+      <configuration name="TestAuthorMapper.testupte2" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestBookMapper_testBought - 2019.12.29 at 16h 39m 37s.xml">
+      <configuration name="TestBookMapper.testBought" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestBookMapper_testBought - 2019.12.29 at 16h 41m 30s.xml">
+      <configuration name="TestBookMapper.testBought" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestBookMapper_testBought - 2019.12.29 at 16h 45m 48s.xml">
+      <configuration name="TestBookMapper.testBought" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/book_plus$Tomcat_9_0_19.ic" NAME="Tomcat 9.0.19 Coverage Results" MODIFIED="1575809528437" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>
